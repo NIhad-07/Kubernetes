@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox
+  template:
+    metadata:
+      labels:
+        app: busybox
+    spec:
+      containers:
+      - name: busybox-container
+        image: busybox:latest
+        command: ["sleep", "infinity"]  # Keeps the container running
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: busybox-service
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: busybox
+
+~                                                                                                                                       
+"kubebusybox.yml" 31L, 535B                                                                                           1,1           All
