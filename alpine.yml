@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alamap
+  name: alpine-deployment
   labels:
-    app: am1
+    app: ap1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: am1
+      app: ap1
   template:
     metadata:
       labels:
-        app: am1
+        app: ap1
     spec:
       containers:
-      - name: alma-container
-        image: almalinux:latest
+      - name: alpine-container
+        image: alpine:latest
         command: ["sleep", "infinity"]
         ports:
         - containerPort: 80
@@ -25,9 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-almalinux
+  name: service-alpine
 spec:
   type: NodePort
   selector:
-    app: am1
-                                                                                                                      1,1           Top
+    app: ap1
+"kubalpine.yml" 39L, 585B                                                                                             1,1           Top
+                                                                                                      1,1           Top
